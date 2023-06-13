@@ -1,0 +1,28 @@
+name: TitlePlugin
+version: 1.0.1
+main: com.crafted.customname.TitlePlugin
+description: Allow for custom title and names
+author: Shahar
+api-version: 1.19
+depend:
+  - Vault
+  - EssentialsChat
+commands:
+  title:
+    description: "Change your title"
+    usage: "/title <title>"
+  color:
+    description: "Set your color"
+    usage: "/color <&[0-9a-c]>"
+  port:
+    description: "Teleports you to the port"
+    usage: "/port"
+  bed:
+    description: "Teleports you to your bed"
+    usage: "/bed"
+  spawn:
+    description: "Teleports you back to current world spawn"
+    usage: "/spawn"
+  resetprefix:
+    description: "Removes your title and color"
+    usage: "/resetprefix"
