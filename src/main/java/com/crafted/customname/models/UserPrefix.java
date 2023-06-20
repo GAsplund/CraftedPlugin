@@ -18,21 +18,20 @@ public class UserPrefix {
         this.title = title;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public String getColor() {
+        return color;
     }
 
     @Override
     public String toString() {
         return title + (title.isEmpty() ? "" : " ") + color;
-    }
-
-    public String serialize() {
-        return title + "\n" + color;
-    }
-
-    public static UserPrefix deserialize(String serialized) {
-        String[] split = serialized.split("\n");
-        return new UserPrefix(split[0], split[1]);
     }
 }

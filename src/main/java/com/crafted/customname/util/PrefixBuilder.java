@@ -20,8 +20,16 @@ public class PrefixBuilder {
         chat = Objects.requireNonNull(Bukkit.getServer().getServicesManager().getRegistration(Chat.class)).getProvider();
     }
 
+    /**
+     * Gets the prefix of a player
+     * @param player The player to get the prefix for
+     * @return The prefix object of the player
+     */
     public UserPrefix getPrefix(Player player) {
-        return UserPrefix.deserialize(chat.getPlayerInfoString(player, "prefix_serialized", "\n&r"));
+        return new UserPrefix(
+                chat.getPlayerInfoString(player, "cm.title", ""),
+                chat.getPlayerInfoString(player, "cm.color", "&r")
+        );
     }
 
     /**
@@ -60,6 +68,7 @@ public class PrefixBuilder {
      */
     public void setPrefix(Player player, UserPrefix prefix) {
         chat.setPlayerPrefix(null, player, prefix.toString());
-        chat.setPlayerInfoString(player, "prefix_serialized", prefix.serialize());
+        chat.setPlayerInfoString(player, "cm.title", prefix.getTitle());
+        chat.setPlayerInfoString(player, "cm.color", prefix.getColor());
     }
 }
