@@ -2,6 +2,8 @@ package com.crafted.customname.commands;
 
 import com.crafted.customname.util.ChatColors;
 import com.crafted.customname.util.PrefixBuilder;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.permission.Permission;
 import org.bukkit.Bukkit;
@@ -15,6 +17,10 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class TitleCommand implements CommandExecutor {
+    private final Component tooLongMessage = Component
+            .text("Your title is too long! Please set a title shorter than 13 characters.")
+            .color(NamedTextColor.RED);
+
     private final PrefixBuilder builder;
     private final Permission perms;
 
@@ -33,7 +39,7 @@ public class TitleCommand implements CommandExecutor {
 
         String rawPrefix = ChatColors.stripColor(prefix);
         if (rawPrefix.length() > 13) {
-            player.sendMessage("§cYour title is too long! Please set a title shorter than 13 characters.");
+            player.sendMessage(tooLongMessage);
             return false;
         }
 

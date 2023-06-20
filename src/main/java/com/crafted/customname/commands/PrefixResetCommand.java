@@ -1,6 +1,8 @@
 package com.crafted.customname.commands;
 
 import com.crafted.customname.util.PrefixBuilder;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.permission.Permission;
 import org.bukkit.Bukkit;
@@ -14,6 +16,9 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class PrefixResetCommand implements CommandExecutor {
+    private final Component prefixResetMessage = Component
+            .text("Your title and color have been reset.");
+
     private final PrefixBuilder builder;
     private final Permission perms;
 
@@ -28,6 +33,7 @@ public class PrefixResetCommand implements CommandExecutor {
         }
 
         builder.removePrefix(player);
+        sender.sendMessage(prefixResetMessage);
         return true;
     }
 }
