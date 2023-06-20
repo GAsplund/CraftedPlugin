@@ -35,8 +35,10 @@ public class PlayerInteractEventListener implements Listener {
             if (clicked != null) {
                 if (clicked.getType() == Material.STONE_BUTTON) {
                     Location loc = buttons.get(clicked.getLocation());
-                    if(loc != null) event.getPlayer().teleport(loc);
-                    event.setCancelled(true);
+                    if(loc != null)  {
+                        event.getPlayer().teleport(loc);
+                        event.setCancelled(true);
+                    }
                 }
             }
         }
