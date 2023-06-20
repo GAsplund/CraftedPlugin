@@ -27,8 +27,8 @@ public class PrefixBuilder {
      */
     public UserPrefix getPrefix(Player player) {
         return new UserPrefix(
-                chat.getPlayerInfoString(player, "cm-title", ""),
-                chat.getPlayerInfoString(player, "cm-color", "&r")
+                chat.getPlayerInfoString(null, player, "cm-title", ""),
+                chat.getPlayerInfoString(null, player, "cm-color", "&r")
         );
     }
 
@@ -68,7 +68,7 @@ public class PrefixBuilder {
      */
     public void setPrefix(Player player, UserPrefix prefix) {
         chat.setPlayerPrefix(null, player, prefix.toString());
-        chat.setPlayerInfoString(player, "cm-title", prefix.getTitle());
-        chat.setPlayerInfoString(player, "cm-color", prefix.getColor());
+        chat.setPlayerInfoString(null, player, "cm-title", prefix.getTitle());
+        chat.setPlayerInfoString(null, player, "cm-color", prefix.getColor());
     }
 }
