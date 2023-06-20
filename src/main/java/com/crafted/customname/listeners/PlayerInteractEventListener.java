@@ -16,10 +16,13 @@ import java.util.Map;
 public class PlayerInteractEventListener implements Listener {
 
     // Hardcoded locations, but we don't need a config for this.
-    Map<Location, String> buttons = new HashMap<>() {{
-        put(new Location(Bukkit.getWorld("world"), 0, 0, 0), "mv tp %s P");
-        put(new Location(Bukkit.getWorld("world"), 0, 0, 0), "mv tp %s C");
-        put(new Location(Bukkit.getWorld("world"), 0, 0, 0), "mv tp %s S");
+    Map<Location, Location> buttons = new HashMap<>() {{
+        put(new Location(Bukkit.getWorld("2023_PORT"), 163, 65, 319),
+                new Location(Bukkit.getWorld("2023_CREATIVE"), 0.5, -2, 0.5));
+        put(new Location(Bukkit.getWorld("2023_PORT"), 204, 65, 276),
+                new Location(Bukkit.getWorld("2023_SURVIVAL"), 275.5, 65, -89.5));
+        put(new Location(Bukkit.getWorld("2023_PORT"), 247, 65, 317),
+                new Location(Bukkit.getWorld("2023_QUESTIONS"), 0.5, -60, 0.5));
     }};
 
     @EventHandler
@@ -31,9 +34,9 @@ public class PlayerInteractEventListener implements Listener {
             // Just in-case we'll check to make sure.
             if (clicked != null) {
                 if (clicked.getType() == Material.STONE_BUTTON) {
-                    ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
-                    String command = String.format(buttons.get(clicked.getLocation()), event.getPlayer().getName());
-                    if(command != null) Bukkit.dispatchCommand(console, command);
+                    Location loc = buttons.get(clicked.getLocation());
+                    if(loc != null) event.getPlayer().teleport(loc);
+                    event.setCancelled(true);
                 }
             }
         }

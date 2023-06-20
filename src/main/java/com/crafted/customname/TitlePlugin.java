@@ -4,6 +4,7 @@ import com.crafted.customname.commands.*;
 import com.crafted.customname.listeners.ChatColorListener;
 import com.crafted.customname.listeners.ChatListener;
 import com.crafted.customname.listeners.EntityDeathEventListener;
+import com.crafted.customname.listeners.PlayerInteractEventListener;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
@@ -41,6 +42,7 @@ public class TitlePlugin extends JavaPlugin {
         //getServer().getPluginManager().registerEvents(new ChatListener(), this);
         getServer().getPluginManager().registerEvents(new EntityDeathEventListener(), this);
         getServer().getPluginManager().registerEvents(new ChatColorListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerInteractEventListener(), this);
 
         // Register commands
         Objects.requireNonNull(this.getCommand("resetprefix")).setExecutor(new PrefixResetCommand());
