@@ -13,7 +13,7 @@ Made for the 2023 CraftedMovie reunion server.
 ## Requirements  
 - Vault is needed in order for `/title`, `/color` and world colors to work
 - `/spawn` relies (regrettably) on Multiverse and teleports you to the world spawn
-- The plugin is only tested for 1.19.4 but may work for other versions as well
 
 ## Limitations  
-Worlds and locations are currently hardcoded. This may change down the road.
+- Worlds and locations are currently hardcoded. This may change down the road
+- The plugin is only tested for 1.19.4 but may work for other versions as well
