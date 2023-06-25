@@ -4,36 +4,24 @@ import com.crafted.customname.util.ChatColors;
 import com.crafted.customname.util.PrefixBuilder;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
-import net.milkbowl.vault.chat.Chat;
-import net.milkbowl.vault.permission.Permission;
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Arrays;
-import java.util.Objects;
-
-public class TitleCommand implements CommandExecutor {
+public class TitleCommand extends AbstractPermissionCommand {
     private final Component tooLongMessage = Component
             .text("Your title is too long! Please set a title shorter than 13 characters.")
             .color(NamedTextColor.RED);
 
     private final PrefixBuilder builder;
-    private final Permission perms;
 
     public TitleCommand() {
+        super("cm.prefix.title");
         builder = new PrefixBuilder();
-        perms = Objects.requireNonNull(Bukkit.getServer().getServicesManager().getRegistration(Permission.class)).getProvider();
     }
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if(!(sender instanceof Player player)) {
-            return true;
-        }
-
+    public boolean execute(Player player, @NotNull String[] args) {
         if (args.length < 1) return false;
         String prefix = args[0];
 
