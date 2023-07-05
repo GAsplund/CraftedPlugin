@@ -19,6 +19,7 @@ public class PlayerInteractEventListener implements Listener {
     Map<Location, Location> buttons = new HashMap<>() {{
         put(new Location(Bukkit.getWorld("2023_PORT"), 163, 65, 319),
                 new Location(Bukkit.getWorld("2023_CREATIVE"), 0.5, -2, 0.5)); // Creative
+
         put(new Location(Bukkit.getWorld("2023_PORT"), 204, 65, 276),
                 new Location(Bukkit.getWorld("2023_SURVIVAL"), 275.5, 65, -89.5)); // Survival
         put(new Location(Bukkit.getWorld("2023_PORT"), 247, 65, 317),
