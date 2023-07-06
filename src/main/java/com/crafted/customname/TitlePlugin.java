@@ -5,6 +5,7 @@ import com.crafted.customname.listeners.ChatColorListener;
 import com.crafted.customname.listeners.ChatListener;
 import com.crafted.customname.listeners.EntityDeathEventListener;
 import com.crafted.customname.listeners.PlayerInteractEventListener;
+import com.crafted.customname.scheduler.PlayerLotteryScheduler;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
@@ -51,6 +52,10 @@ public class TitlePlugin extends JavaPlugin {
         Objects.requireNonNull(this.getCommand("bed")).setExecutor(new BedCommand());
         Objects.requireNonNull(this.getCommand("port")).setExecutor(new PortCommand());
         Objects.requireNonNull(this.getCommand("spawn")).setExecutor(new SpawnCommand());
+        Objects.requireNonNull(this.getCommand("lottery")).setExecutor(new LotteryCommand());
+
+        // Scheduled events
+        PlayerLotteryScheduler.onEnable();
     }
 
     private boolean checkVaultIntegration() {

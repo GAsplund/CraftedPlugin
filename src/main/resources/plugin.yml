@@ -26,3 +26,6 @@ commands:
   resetprefix:
     description: "Removes your title and color"
     usage: "/resetprefix"
+  lottery:
+    description: "Forces a lottery to run"
+    usage: "/lottery"

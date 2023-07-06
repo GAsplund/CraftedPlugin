@@ -5,18 +5,20 @@ import com.crafted.customname.util.PlayerLottery;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitScheduler;
 
+import java.util.Objects;
+
 public final class PlayerLotteryScheduler {
 
-    private static final long lotteryTime = 7200L;
+    private static final long lotteryTime = 72000L;
 
-    public void onEnable() {
+    public static void onEnable() {
 
         Plugin plugin = TitlePlugin.getPlugin(TitlePlugin.class);
 
         BukkitScheduler scheduler = plugin.getServer().getScheduler();
         scheduler.scheduleSyncRepeatingTask(
                 plugin,
-                () -> PlayerLottery.doLottery(plugin.getServer().getWorld("2023_SURVIVAL")),
+                () -> PlayerLottery.doLottery(Objects.requireNonNull(plugin.getServer().getWorld("2023_SURVIVAL"))),
                 0L,
                 lotteryTime
         );

@@ -45,20 +45,18 @@ public class PlayerLottery {
             return;
         }
         
-        Player winner = world.getPlayers().get(rand.nextInt(world.getPlayers().size()-1));
+        Player winner = world.getPlayers().get(rand.nextInt(world.getPlayers().size()));
+        Bukkit.broadcast(lotteryMessage);
 
-        for (Player player : world.getPlayers()) {
-            if (player == winner) {
-                winner.sendMessage(lotteryMessage);
-                winner.playSound(winner.getLocation(), "minecraft:entity.player.levelup", 1, 0.5f + pitch_randomiser);
+        winner.playSound(winner.getLocation(), "minecraft:entity.player.levelup", 1, 0.5f + pitch_randomiser);
 
-                if (winner.getInventory().addItem(new ItemStack(Material.DIAMOND, 1)).isEmpty()) {
-                    world.dropItem(winner.getLocation(), new ItemStack(Material.DIAMOND, 1));
-                    winner.sendMessage(dropMessage);
-                }
-            } else {
-                player.sendMessage(lotteryMessage);
-            }
+        winner.getInventory().addItem(new ItemStack(Material.DIAMOND, 1));
+
+        if (winner.getInventory().firstEmpty() < 0) {
+            world.dropItem(winner.getLocation(), new ItemStack(Material.DIAMOND, 1));
+            winner.sendMessage(dropMessage);
+        } else {
+            winner.getInventory().addItem(new ItemStack(Material.DIAMOND, 1));
         }
 
     }
