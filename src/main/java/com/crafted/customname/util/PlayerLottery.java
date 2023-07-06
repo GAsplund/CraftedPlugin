@@ -27,8 +27,9 @@ public class PlayerLottery {
             .text("Your inventory was full, so the item was dropped in front of you instead!")
             .color(NamedTextColor.RED);
 
+    private static final Random rand = new Random();
+
     public static void doLottery(World world) {
-        Random rand = new Random();
         float pitch_randomiser = rand.nextFloat();
         //0.0 and 1.0
 

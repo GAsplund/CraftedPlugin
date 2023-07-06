@@ -11,7 +11,6 @@ import java.util.Random;
 
 public class EntityDeathEventListener implements Listener {
     Random rand = new Random();
-    float cow_pitch_randomiser = rand.nextFloat();
 
     private final Component cowDeathMessage = Component
             .text("A moment of silence please... a cow was just killed.")
@@ -19,6 +18,7 @@ public class EntityDeathEventListener implements Listener {
 
     @EventHandler
     public void onEntityDeath(EntityDeathEvent event) {
+        float cow_pitch_randomiser = rand.nextFloat();
         if (event.getEntity() instanceof Cow) {
             event.setShouldPlayDeathSound(false);
             event.getEntity().getWorld().getPlayers().forEach(
